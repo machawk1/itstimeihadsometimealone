@@ -19,6 +19,7 @@ retweets = Counter()
 quotes = Counter()
 seen = set()
 
+
 def count(status):
     if status.id in seen:
         return
@@ -27,7 +28,7 @@ def count(status):
     user = status.user.screen_name
     users[user] += 1
 
-    if hasattr(status, "quoted_status"): 
+    if hasattr(status, "quoted_status"):
         quotes[user] += 1
         sys.stdout.write("💬 ")
     elif hasattr(status, "retweeted_status"):
@@ -39,10 +40,12 @@ def count(status):
 
     sys.stdout.flush()
 
+
 def check():
     since_id = max(seen)
     for status in twitter.home_timeline(count=200, since_id=since_id):
         count(status)
+
 
 print("")
 print("Following your home timeline tweet (🐦) quote (💬) retweet (🔁)")
