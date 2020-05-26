@@ -12,5 +12,3 @@ if not e["CONSUMER_KEY"]:
 auth = tweepy.OAuthHandler(e["CONSUMER_KEY"], e["CONSUMER_SECRET"])
 auth.set_access_token(e["ACCESS_TOKEN"], e["ACCESS_TOKEN_SECRET"])
 twitter = tweepy.API(auth, wait_on_rate_limit=True)
-
-
