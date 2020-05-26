@@ -131,9 +131,12 @@ if users_path.is_file():
     use_cached = prompt_boolean(msg_oldcopy)
 
 if not use_cached:
-    print("\n")
-    print(bold("Ok, I'm going to fetch the information for {} users from Twitter..."))
     users = get_users(user_ids)
+    print("\n")
+    msg_fetch = (f"\nOk, I'm going to fetch the information for {len(users)}"
+                 f" users from Twitter...")
+    print(bold(msg_fetch))
+
 else:
     users = json.load(users_path.open())
 save_json(users, archive / "extras" / "users.json")
