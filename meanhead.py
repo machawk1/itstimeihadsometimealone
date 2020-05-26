@@ -132,7 +132,6 @@ if users_path.is_file():
 
 if not use_cached:
     users = get_users(user_ids)
-    print("\n")
     msg_fetch = (f"\nOk, I'm going to fetch the information for {len(users)}"
                  f" users from Twitter...")
     print(bold(msg_fetch))
@@ -148,5 +147,5 @@ for user_id in followers:
     handle = "@" + user['screen_name']
     print(f"\n{user['name']} {bold(handle)}")
     print(f"https://twitter.com/{user['screen_name']}", end="\n\n")
-    print(user["description"], end="\n\n")
+    print(user["description"])
     prompt_boolean("Unfollow?", default=False)
